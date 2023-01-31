@@ -1,0 +1,129 @@
+:root {
+    --primary: #ccdad1;
+    --secondary: #9caea9;
+    --tertiary: #788585;
+    --light-dark: #6f6866;
+    --dark: #38302e;
+    --border-radius: 0.3rem;
+  }
+  
+ 
+  
+  body {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: var(--dark);
+    font-size: 16px;
+  }
+ 
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.25;
+  }
+  
+  main {
+    width: 75%;
+  }
+  
+ .btn-primary{
+    font-size: 1.3rem;
+    text-decoration: none;
+    padding: 6px 5px;
+    width: 100%;
+    display: block;
+    margin:1px 0 ;
+    border-radius: var(--border-radius);
+    color: var(--dark);
+    border: none;
+    outline: none;
+    box-shadow: 3px 3px var(--dark);
+    transform: translate(-1px, -1px);
+ }
+  
+  .btn {
+    font-size: 1.3rem;
+    text-decoration: none;
+    padding: 6px 5px;
+    width: 100%;
+    display: block;
+    margin:1px 0 ;
+    border-radius: var(--border-radius);
+    color: var(--dark);
+    border: none;
+    outline: none;
+    background-color: lightgrey;
+    box-shadow: 3px 3px var(--dark);
+    transform: translate(-1px, -1px);
+    
+  }
+  
+  .btn:hover {
+    color: var(--primary);
+    background-color: var(--tertiary);
+    transform: translate(0, 0);
+    box-shadow: 2px 2px var(--dark);
+  }
+  
+  .btn-inline {
+    display: inline;
+  }
+  
+  .btn-back {
+    border-radius: var(--border-radius);
+    color: var(--primary);
+    border: none;
+    outline: none;
+    background-color: var(--light-dark);
+    box-shadow: 3px 3px var(--secondary);
+    transform: translate(-1px, -1px);
+    display: inline-block;
+    width: auto;
+    margin-top: 20px;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.2rem;
+  }
+  
+  .btn-back:hover {
+    color: var(--primary);
+    background-color: var(--tertiary);
+    transform: translate(0, 0);
+    box-shadow: 2px 2px var(--dark);
+  }
+  
+  
+  .d-grid {
+    padding: 2.5%;
+   float: left;
+  }
+  
+  /* FORM */
+  .form-input {
+    margin: 5px 0;
+    font-size: 1.2rem;
+    border: 2px solid var(--light-dark);
+    border-radius: var(--border-radius);
+  }
+  .col-sm-2{
+    margin: auto;
+   width: 19%;
+  
+  }
+ 
+
+  
+  
+  
+
+  
+
+  
