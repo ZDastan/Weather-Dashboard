@@ -7,7 +7,7 @@ var fiveDayEl = document.querySelector('#fiveday');
 //If city name not type and click search button
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    var username = nameInputEl.value.trim();
+    
     if (cityInputName) {
         (cityInputName);
         forecastEl.textContent ='';
