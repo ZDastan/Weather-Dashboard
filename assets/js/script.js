@@ -6,7 +6,8 @@ var fiveDayEl = document.querySelector('#fiveday');
 var temperatureEl = document.querySelector("#temperature")
 var windSpeedEl = document.getElementById("wind-speed");
 var humidityEl = document.getElementById("humidity");
-var selectCityEl =document.getElementById("select-city")
+var selectCityEl =document.getElementById("select-city");
+var cardHistoryEl =document.getElementById("card history");
 
 
 //click search button
@@ -62,8 +63,10 @@ function getApi(city) {
     });
 }
 function creatButton (c) {
-var historyButtonEl = document.getElementById('card history')
+cardHistoryEl.textContent= city
 }
+
+
 function callForecast (city){
 var url = `http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${APIKey}`
 fetch(url)
@@ -76,7 +79,16 @@ fetch(url)
     })
     .catch(console.err);
 }
-
+function convertDate(UNIXtimestamp) {
+    let convertedDate = "";
+    let a = new Date(UNIXtimestamp * 1000);
+    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let date = a.getDate();
+    convertedDate = month + ' ' + date + ', '+ year;
+    return convertedDate;
+}
 
 
 
