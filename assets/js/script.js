@@ -8,6 +8,7 @@ var windSpeedEl = document.getElementById("wind-speed");
 var humidityEl = document.getElementById("humidity");
 var selectCityEl =document.getElementById("select-city");
 var cardHistoryEl =document.getElementById("card history");
+var weatherEl=document.getElementById("weather")
 
 
 //click search button
@@ -63,9 +64,29 @@ function getApi(city) {
     });
 }
 function creatButton (c) {
-cardHistoryEl.textContent= city
-}
 
+}
+function fiveDayForecast(data){
+    
+    for (var i=0;i <data.list.length;i=i+8){
+        console.log(data.list[i])
+        var forecastCard=document.createElement("div")
+        var forecastTemp=document.createElement("p")
+        var displayDate=document.createElement("h3")
+        var humidity=document.createElement("p")
+       var date=new Date(data.list[i].dt*1000)
+        var dateFormat=date.toLocaleDateString()
+        displayDate.textContent=dateFormat
+        forecastCard.setAttribute("class","card col-2")
+        forecastTemp.textContent=`temp: ${data.list[i].main.temp}`
+        humidity.textContent=`humidity:${data.list[i].main.humidity}`
+        weatherEl.appendChild(forecastCard)
+        forecastCard.appendChild(displayDate)
+        displayDate.append(forecastTemp)
+        forecastTemp.append(humidity)
+
+    }
+}
 
 function callForecast (city){
 var url = `http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${APIKey}`
@@ -75,20 +96,12 @@ fetch(url)
       return resp.json();
     })
     .then((data) => {
-      console.log(data)
+      
+      fiveDayForecast(data)
     })
     .catch(console.err);
 }
-function convertDate(UNIXtimestamp) {
-    let convertedDate = "";
-    let a = new Date(UNIXtimestamp * 1000);
-    let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let date = a.getDate();
-    convertedDate = month + ' ' + date + ', '+ year;
-    return convertedDate;
-}
+
 
 
 
