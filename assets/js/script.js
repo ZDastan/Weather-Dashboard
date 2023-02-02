@@ -88,6 +88,7 @@ function fiveDayForecast(data){
         forecastTemp.append(humidity)
         humidity.appendChild(wind)
 
+
     }
 }
 

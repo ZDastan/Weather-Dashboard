@@ -17,7 +17,7 @@
 
 
 
-![alt text](assets/image/Screenshot%202023-02-02%20at%2023.21.20.png);
+![alt text](assets/image/Screenshot%202023-02-02%20at%2023.21.20.png)
 
 
 
