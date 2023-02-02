@@ -74,16 +74,19 @@ function fiveDayForecast(data){
         var forecastTemp=document.createElement("p")
         var displayDate=document.createElement("h3")
         var humidity=document.createElement("p")
+        var wind=document.createElement("p")
        var date=new Date(data.list[i].dt*1000)
         var dateFormat=date.toLocaleDateString()
         displayDate.textContent=dateFormat
         forecastCard.setAttribute("class","card col-2")
         forecastTemp.textContent=`temp: ${data.list[i].main.temp}`
         humidity.textContent=`humidity:${data.list[i].main.humidity}`
+        wind.textContent=`wind:${data.list[i].wind.speed}`
         weatherEl.appendChild(forecastCard)
         forecastCard.appendChild(displayDate)
         displayDate.append(forecastTemp)
         forecastTemp.append(humidity)
+        humidity.appendChild(wind)
 
     }
 }
