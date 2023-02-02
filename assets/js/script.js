@@ -3,8 +3,13 @@ var searchOptions = document.querySelector('#city-search');
 var cityInputName = document.querySelector('#cityname');
 var forecastEl = document.querySelector('#forecast');
 var fiveDayEl = document.querySelector('#fiveday');
+var temperatureEl = document.querySelector("#temperature")
+var windSpeedEl = document.getElementById("wind-speed");
+var humidityEl = document.getElementById("humidity");
+var selectCityEl =document.getElementById("select-city")
 
-//If city name not type and click search button
+
+//click search button
 var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = cityInputName.value.trim();
@@ -45,20 +50,44 @@ function getApi(city) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
+      
+      var city={
+        name:data.name,
+        lat:data.coord.lat,
+        lon:data.coord.lon,
+      }
+      callForecast(city)
+      displayWeather(data)
+      creatButton (city)
     });
+}
+function creatButton (c) {
+var historyButtonEl = document.getElementById('card history')
+}
+function callForecast (city){
+var url = `http://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&appid=${APIKey}`
+fetch(url)
+    .then((resp) => {
+    if (!resp.ok) throw new Error(resp.statusText);
+      return resp.json();
+    })
+    .then((data) => {
+      console.log(data)
+    })
+    .catch(console.err);
 }
 
 
 
-//curent weather
-// var nameValue = data['name'];
-// var temperature = data['main']['temp'];
-// var wind =data['wind'];
-// var humiditiy = data['main']['humidity'];
-// var descValue = data
 
-
+function displayWeather(data){
+    console.log(data);
+    selectCityEl.textContent =data.name
+    temperatureEl.textContent = `${data.main.temp} F`
+    
+    windSpeedEl.textContent =data.wind.speed+" MPH"
+    humidityEl.textContent=data.main.humidity+" %"
+}
 
 
 
