@@ -67,7 +67,7 @@ function creatButton (c) {
 
 }
 function fiveDayForecast(data){
-    
+    weatherEl.innerText=``
     for (var i=0;i <data.list.length;i=i+8){
         console.log(data.list[i])
         var forecastCard=document.createElement("div")
