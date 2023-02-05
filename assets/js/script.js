@@ -9,6 +9,8 @@ var humidityEl = document.getElementById("humidity");
 var selectCityEl =document.getElementById("select-city");
 var cardHistoryEl =document.getElementById("card history");
 var weatherEl=document.getElementById("weather")
+const historyEl = document.getElementById("history");
+let searchHistory = JSON.parse(localStorage.getItem("cityname")) || [];
 
 
 //click search button
@@ -16,8 +18,7 @@ var formSubmitHandler = function (event) {
     event.preventDefault();
     var city = cityInputName.value.trim();
     if (city) {
-        // (cityInputName);
-        // forecastEl.textContent ='';
+       
         getApi(city)
         cityInputName.value='';
 
@@ -28,7 +29,14 @@ var formSubmitHandler = function (event) {
 //Seach button click event
 var buttonClickHandler = function (event) {
     event.preventDefault();
-    var city = event.target.getAttribute('data-city');
+    var city = event.target.getAttribute('cityname');
+    city = JSON.parse(city);
+    console.log(city);
+    city.forEach(element => {
+        let score=document.createElement('p')
+        score.textContent=`SearchHistory: ${element.search} score: ${element.score}`
+        highScore.appendChild(score)
+     });
     
     if(city){
         console.log(city);
@@ -38,6 +46,34 @@ var buttonClickHandler = function (event) {
     }
     
 };
+cityInputName.addEventListener("click", function () {
+    const searchTerm = cityInputName.value;
+    //displayWeather(searchTerm);
+    searchHistory.push(searchTerm);
+    localStorage.setItem("search", JSON.stringify(searchHistory));
+    //renderSearchHistory();
+})
+function renderSearchHistory() {
+    //historyEl.innerHTML = "";
+    for (let i = 0; i < searchHistory.length; i++) {
+        const historyItem = document.createElement("input");
+        historyItem.setAttribute("type", "text");
+        historyItem.setAttribute("readonly", true);
+        historyItem.setAttribute("class", "form-control d-block bg-white");
+        historyItem.setAttribute("value", searchHistory[i]);
+        historyItem.addEventListener("click", function () {
+            getWeather(historyItem.value);
+        })
+        historyEl.append(historyItem);
+    }
+}
+
+// //renderSearchHistory();
+// if (searchHistory.length > 0) {
+//     getWeather(searchHistory[searchHistory.length - 1]);
+// }
+
+
 
 //Call API
 var APIKey="89bf41583e30d5bf31930db45b5bf434";
