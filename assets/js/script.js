@@ -1,5 +1,5 @@
 var searchOptions = document.querySelector('#city-search');
-//var searchButtonsEl = document.querySelector('#search-buttons');
+var searchButtonsEl = document.querySelector('#search-buttons');
 var cityInputName = document.querySelector('#cityname');
 var forecastEl = document.querySelector('#forecast');
 var fiveDayEl = document.querySelector('#fiveday');
@@ -32,11 +32,7 @@ var buttonClickHandler = function (event) {
     var city = event.target.getAttribute('cityname');
     city = JSON.parse(city);
     console.log(city);
-    city.forEach(element => {
-        let score=document.createElement('p')
-        score.textContent=`SearchHistory: ${element.search} score: ${element.score}`
-        highScore.appendChild(score)
-     });
+   
     
     if(city){
         console.log(city);
@@ -50,7 +46,7 @@ cityInputName.addEventListener("click", function () {
     const searchTerm = cityInputName.value;
     //displayWeather(searchTerm);
     searchHistory.push(searchTerm);
-    localStorage.setItem("search", JSON.stringify(searchHistory));
+    localStorage.setItem("cardHistoryEl", JSON.stringify(searchHistory));
     //renderSearchHistory();
 })
 function renderSearchHistory() {
@@ -159,4 +155,4 @@ function displayWeather(data){
 
 //Event listeners
 searchOptions.addEventListener('submit', formSubmitHandler);
-searchButtonsEl.addEventListener('click', buttonClickHandler);
+//searchButtonsEl.addEventListener('click', buttonClickHandler);
