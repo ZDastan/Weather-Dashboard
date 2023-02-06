@@ -159,4 +159,4 @@ function displayWeather(data){
 
 //Event listeners
 searchOptions.addEventListener('submit', formSubmitHandler);
-//searchButtonsEl.addEventListener('click', buttonClickHandler);
+searchButtonsEl.addEventListener('click', buttonClickHandler);
