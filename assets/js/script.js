@@ -20,7 +20,7 @@ var formSubmitHandler = function (event) {
     if (city) {
        
         getApi(city)
-        cityInputName.value='';
+        //cityInputName.value='';
 
     }
 };
@@ -42,13 +42,7 @@ var buttonClickHandler = function (event) {
     }
     
 };
-cityInputName.addEventListener("click", function () {
-    const searchTerm = cityInputName.value;
-    //displayWeather(searchTerm);
-    searchHistory.push(searchTerm);
-    localStorage.setItem("cardHistoryEl", JSON.stringify(searchHistory));
-    //renderSearchHistory();
-})
+
 function renderSearchHistory() {
     //historyEl.innerHTML = "";
     for (let i = 0; i < searchHistory.length; i++) {
@@ -142,7 +136,12 @@ fetch(url)
 
 
 function displayWeather(data){
-    console.log(data);
+    console.log(data.name);
+    const searchTerm = data.name;
+    //displayWeather(searchTerm);
+    searchHistory.push(searchTerm);
+    
+    localStorage.setItem("cityname", JSON.stringify(searchHistory));
     selectCityEl.textContent =data.name
     temperatureEl.textContent = `${data.main.temp} F`
     
